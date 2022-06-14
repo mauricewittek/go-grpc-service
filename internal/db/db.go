@@ -2,6 +2,7 @@ package db
 
 import (
 	"fmt"
+	"log"
 	"os"
 
 	"github.com/jmoiron/sqlx"
@@ -35,7 +36,16 @@ func New() (Store, error) {
 }
 
 func (s Store) GetRocket(id string) (rocket.Rocket, error) {
-	return rocket.Rocket{}, nil
+	var rkt rocket.Rocket
+	row := s.db.QueryRow(`SELECT id FROM rockets where id=$1`, id)
+
+	err := row.Scan(&rkt.ID)
+	if err != nil {
+		log.Print(err.Error())
+		return rocket.Rocket{}, err
+	}
+
+	return rkt, nil
 }
 
 func (s Store) InsertRocket(rkt rocket.Rocket) (rocket.Rocket, error) {
