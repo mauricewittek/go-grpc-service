@@ -11,9 +11,10 @@ func TestRocketService(t *testing.T) {
 	mockCtrl := gomock.NewController(t)
 	defer mockCtrl.Finish()
 
+	rocketStoreMock := NewMockStore(mockCtrl)
+	id := "UUID-1"
+
 	t.Run("test get rocket", func(t *testing.T) {
-		rocketStoreMock := NewMockStore(mockCtrl)
-		id := "UUID-1"
 		rocketStoreMock.
 			EXPECT().
 			GetRocket(id).
@@ -33,8 +34,6 @@ func TestRocketService(t *testing.T) {
 	})
 
 	t.Run("test insert rocket", func(t *testing.T) {
-		rocketStoreMock := NewMockStore(mockCtrl)
-		id := "UUID-1"
 		rocketStoreMock.
 			EXPECT().
 			InsertRocket(Rocket{
@@ -56,8 +55,6 @@ func TestRocketService(t *testing.T) {
 	})
 
 	t.Run("test delete rocket", func(t *testing.T) {
-		rocketStoreMock := NewMockStore(mockCtrl)
-		id := "UUID-1"
 		rocketStoreMock.
 			EXPECT().
 			DeleteRocket(id).
