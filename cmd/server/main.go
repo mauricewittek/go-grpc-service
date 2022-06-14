@@ -1,8 +1,20 @@
 package main
 
-import "log"
+import (
+	"log"
+
+	"github.com/mauricewittek/go-grpc-service/internal/db"
+	"github.com/mauricewittek/go-grpc-service/internal/rocket"
+)
 
 func Run() error {
+	rocketStore, err := db.New()
+	if err != nil {
+		return err
+	}
+
+	_ = rocket.New(rocketStore)
+
 	return nil
 }
 
