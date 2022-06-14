@@ -37,6 +37,9 @@ github.com/lib/pq/scram
 # github.com/mauricewittek/tutorial-protos v0.0.0-20220614074928-c1949be5d6f0
 ## explicit
 github.com/mauricewittek/tutorial-protos/rocket/v1
+# github.com/satori/go.uuid v1.2.0
+## explicit
+github.com/satori/go.uuid
 # go.uber.org/atomic v1.7.0
 ## explicit; go 1.13
 go.uber.org/atomic

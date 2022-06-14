@@ -81,5 +81,12 @@ func (h Handler) AddRocket(ctx context.Context, req *rkt.AddRocketRequest) (*rkt
 }
 
 func (h Handler) DeleteRocket(ctx context.Context, req *rkt.DeleteRocketRequest) (*rkt.DeleteRocketResponse, error) {
-	return &rkt.DeleteRocketResponse{}, nil
+	err := h.RocketService.DeleteRocket(ctx, req.Id)
+	if err != nil {
+		return &rkt.DeleteRocketResponse{}, err
+	}
+
+	return &rkt.DeleteRocketResponse{
+		Status: "successfully deleted rocket",
+	}, nil
 }
