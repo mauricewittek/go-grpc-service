@@ -7,10 +7,9 @@ import (
 )
 
 type Rocket struct {
-	ID      string
-	Name    string
-	Type    string
-	Flights int
+	ID   string
+	Name string
+	Type string
 }
 
 type Store interface {
